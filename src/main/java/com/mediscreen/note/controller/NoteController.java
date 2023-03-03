@@ -139,7 +139,7 @@ public class NoteController {
             @ApiResponse(responseCode = "404", description = "Note not found", content = @Content),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
     })
-    public ResponseEntity<NoteDto> updateNote(@PathVariable int id, @RequestBody NoteDto noteDto) throws NoteNotFoundException {
+    public ResponseEntity<NoteDto> updateNote(@PathVariable int id, @Valid @RequestBody NoteDto noteDto) throws NoteNotFoundException {
         log.debug("Update note request received, id: {}, note: {}", id, noteDto);
         NoteDto note = noteService.updateNote(id, noteDto);
         log.debug("Update note request processed, note: {}", note);
