@@ -1,5 +1,6 @@
 package com.mediscreen.note.model;
 
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
