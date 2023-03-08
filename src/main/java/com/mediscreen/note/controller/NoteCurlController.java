@@ -26,7 +26,12 @@ public class NoteCurlController {
         this.noteService = noteService;
     }
 
-
+    /**
+     * Adds a new patient note
+     * @param patId the ID of the patient
+     * @param note the patient's note to add
+     * @return ResponseEntity with a message indicating that the patient note has been added
+     */
     @PostMapping("/patHistory/add")
     @Operation(summary = "Add a new patient note", description = "Endpoint for adding a new patient note")
     @ApiResponses(value = {
