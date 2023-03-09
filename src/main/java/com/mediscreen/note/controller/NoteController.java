@@ -47,8 +47,8 @@ public class NoteController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Note retrieved successfully",
                     content = @Content(schema = @Schema(implementation = NoteDto.class))),
-            @ApiResponse(responseCode = "404", description = "Note not found", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+            @ApiResponse(responseCode = "404", description = "Note not found"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     public ResponseEntity<NoteDto> findNoteById(@PathVariable int id) throws NoteNotFoundException {
         log.debug("Find note by id request received, id: {}", id);
@@ -68,7 +68,7 @@ public class NoteController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Notes retrieved successfully",
                     content = @Content(array = @ArraySchema(schema = @Schema(implementation = NoteDto.class)))),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+            @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     public ResponseEntity<List<NoteDto>> getAllNotes() {
         log.debug("Get all notes request received");
@@ -89,8 +89,7 @@ public class NoteController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Notes retrieved successfully",
                     content = @Content(array = @ArraySchema(schema = @Schema(implementation = NoteDto.class)))),
-            @ApiResponse(responseCode = "404", description = "Patient not found", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+            @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     public ResponseEntity<List<NoteDto>> getNotesByPatientId(@PathVariable int patientId) {
         log.debug("Get notes by patientId request received, patientId: {}", patientId);
@@ -111,8 +110,7 @@ public class NoteController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Note created successfully",
                     content = @Content(schema = @Schema(implementation = NoteDto.class))),
-            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+            @ApiResponse(responseCode = "400", description = "Bad request")
     })
     public ResponseEntity<NoteDto> validateNote(@Valid @RequestBody NoteDto noteDto) {
         log.debug("Validate note request received, note: {}", noteDto);
@@ -135,9 +133,8 @@ public class NoteController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Note updated successfully",
                     content = @Content(schema = @Schema(implementation = NoteDto.class))),
-            @ApiResponse(responseCode = "400", description = "Bad request", content = @Content),
-            @ApiResponse(responseCode = "404", description = "Note not found", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+            @ApiResponse(responseCode = "400", description = "Bad request"),
+            @ApiResponse(responseCode = "404", description = "Note not found")
     })
     public ResponseEntity<NoteDto> updateNote(@PathVariable int id, @Valid @RequestBody NoteDto noteDto) throws NoteNotFoundException {
         log.debug("Update note request received, id: {}, note: {}", id, noteDto);
@@ -158,8 +155,8 @@ public class NoteController {
     @Operation(summary = "Delete note", description = "Deletes an existing note with a given ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "204", description = "Note deleted successfully"),
-            @ApiResponse(responseCode = "404", description = "Note not found", content = @Content),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content)
+            @ApiResponse(responseCode = "404", description = "Note not found"),
+            @ApiResponse(responseCode = "400", description = "Bad request")
     })
     public ResponseEntity<Void> deleteNote(@PathVariable int id) throws NoteNotFoundException {
         noteService.deleteNote(id);

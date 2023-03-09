@@ -36,12 +36,11 @@ public class NoteCurlController {
     @Operation(summary = "Add a new patient note", description = "Endpoint for adding a new patient note")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "OK"),
-            @ApiResponse(responseCode = "400", description = "Invalid parameter"),
-            @ApiResponse(responseCode = "500", description = "Server error")
+            @ApiResponse(responseCode = "400", description = "Invalid parameter")
     })
     @Parameters({
             @Parameter(name = "patId", description = "Patient's ID", required = true, example = "1"),
-            @Parameter(name = "note", description = "Patient's note", required = true, example = "Patient is in a good shape")
+            @Parameter(name = "e", description = "Patient's note", required = true, example = "Patient is in a good shape")
     })
     public ResponseEntity<String> addPatientNote(@RequestParam("patId") int patId,
                                                  @RequestParam("e") String note) {
